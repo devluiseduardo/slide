@@ -15,6 +15,7 @@ img {
 
 .slide-wrapper {
   overflow: hidden;
+  cursor: pointer;
 }
 
 .slide {
@@ -42,4 +43,36 @@ img {
 .slide li.active {
   opacity: 1;
   transform: scale(1);
+}
+
+.arrow-nav {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.btn-redondo-div {
+  display: flex;
+  justify-content: center;
+  gap: 3px;
+  margin-top: 10px;
+}
+
+.btn-redondo {
+  border-radius: 100px;
+  /* width: 10px;
+  height: 10px; */
+  background-color: #000;
+  padding: 7px;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-redondo:hover {
+  background-color: #645050 !important;
+}
+
+.btn-redondo.active {
+  background-color: #c50e0e;
 }

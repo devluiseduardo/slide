@@ -103,6 +103,7 @@ export default class Slide {
     this.slidesindexNav(index);
     this.dist.finalPosition = activeSlide.positionElements;
     this.changeActiveClass();
+    this.btnSlideActive(index);
   }
 
   changeActiveClass() {
@@ -125,7 +126,6 @@ export default class Slide {
   }
 
   onResize() {
-    console.log("texte");
     setTimeout(() => {
       this.slidesConfig();
       this.changeSlide(this.index.active);
@@ -143,12 +143,41 @@ export default class Slide {
     this.onResize = debounce(this.onResize.bind(this), 50);
   }
 
+  createBtnsTrocaSlide() {
+    const btnDedondoDiv = document.querySelector(".btn-redondo-div");
+    this.createBtnsNav = this.slideArray.map((item) => {
+      const createBtnsNav = document.createElement("button");
+      createBtnsNav.classList = "btn-redondo";
+      btnDedondoDiv.append(createBtnsNav);
+      return createBtnsNav;
+    });
+
+    // return this.creaaaate;
+  }
+
+  btnSlideActive(index) {
+    this.createBtnsNav.map((item) => {
+      item.classList.remove(this.activeClass);
+    });
+    this.createBtnsNav[index].classList.add(this.activeClass);
+  }
+
+  btnTrocaSlidePassar() {
+    this.createBtnsNav.map((item, index) => {
+      item.addEventListener("click", () => {
+        this.changeSlide(index);
+      });
+    });
+  }
+
   init() {
     this.bindEvents();
     this.transition(true);
     this.addSlideEvents();
     this.slidesConfig();
     this.addResizeEvent();
+    this.createBtnsTrocaSlide();
+    this.btnTrocaSlidePassar();
     return this;
   }
 }
